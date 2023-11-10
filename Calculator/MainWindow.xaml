@@ -1,0 +1,86 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="Calculator" Height="470" Width="370" ResizeMode="NoResize" Background="#FFEAE7E7" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.03*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.03*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.02*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.03*"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <ControlTemplate x:Key="ChaBtn" TargetType="{x:Type Button}">
+                <Grid>
+                    <Rectangle x:Name="Outer" Fill="#FFD6D5D5" Margin="0,0,0,0"/>
+                    <Rectangle x:Name="Inner" Fill="#FFF0F0F0" Margin="3,3,3,3"/>
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="Inner" Property="Fill" Value="#FFDDDDDD"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <ControlTemplate x:Key="NumBtn" TargetType="{x:Type Button}">
+                <Grid>
+                    <Rectangle x:Name="Outer" Fill="#FFD6D5D5" Margin="0,0,0,0"/>
+                    <Rectangle x:Name="Inner" Fill="White" Margin="3,3,3,3"/>
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="Inner" Property="Fill" Value="#FFDDDDDD"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <ControlTemplate x:Key="EquBtn" TargetType="{x:Type Button}">
+                <Grid>
+                    <Rectangle x:Name="Outer" Fill="#FFD6D5D5" Margin="0,0,0,0"/>
+                    <Rectangle x:Name="Inner" Fill="#FF8ABEE2" Margin="3,3,3,3"/>
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="Inner" Property="Fill" Value="#FF599ECE"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Grid.Resources>
+        <TextBox Name="textbox1" Text="0" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" IsReadOnly="True" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Margin="0,0,0,0" BorderBrush="#FFDFDFDF" />
+        <Button x:Name="btn1" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="2" Grid.Column="1" Click="NumBtn_Click">1</Button>
+        <Button x:Name="btn2" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="2" Grid.Column="2" Click="NumBtn_Click">2</Button>
+        <Button x:Name="btn3" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="2" Grid.Column="3" Click="NumBtn_Click">3</Button>
+        <Button x:Name="btn4" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="3" Grid.Column="1" Click="NumBtn_Click">4</Button>
+        <Button x:Name="btn5" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="3" Grid.Column="2" Click="NumBtn_Click">5</Button>
+        <Button x:Name="btn6" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="3" Grid.Column="3" Click="NumBtn_Click">6</Button>
+        <Button x:Name="btn7" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="4" Grid.Column="1" Click="NumBtn_Click">7</Button>
+        <Button x:Name="btn8" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="4" Grid.Column="2" Click="NumBtn_Click">8</Button>
+        <Button x:Name="btn9" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="4" Grid.Column="3" Click="NumBtn_Click">9</Button>
+        <Button x:Name="btn0" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="5" Grid.Column="1" Click="NumBtn_Click">0</Button>
+        <Button x:Name="DotBtn" Foreground="Black" FontSize="35" Template="{StaticResource NumBtn}" Grid.Row="5" Grid.Column="2" Click="DotBtn_Click">.</Button>
+
+        <Button x:Name="AddBtn" Foreground="Black" FontSize="35" Template="{StaticResource ChaBtn}" Grid.Row="2" Grid.Column="4" Click="CalBtn_Click">+</Button>
+        <Button x:Name="SubBtn" Foreground="Black" FontSize="40" Template="{StaticResource ChaBtn}" Grid.Row="3" Grid.Column="4" Click="CalBtn_Click">-</Button>
+        <Button x:Name="MulBtn" Foreground="Black" FontSize="35" Template="{StaticResource ChaBtn}" Grid.Row="4" Grid.Column="4" Click="CalBtn_Click">x</Button>
+        <Button x:Name="DivBtn" Foreground="Black" FontSize="30" Template="{StaticResource ChaBtn}" Grid.Row="5" Grid.Column="4" Click="CalBtn_Click">/</Button>
+        <Button x:Name="EquBtn" Foreground="Black" FontSize="35" Template="{StaticResource EquBtn}" Grid.Row="5" Grid.Column="3" Click="CalBtn_Click">=</Button>
+
+        <Button x:Name="CleBtn" Foreground="Black" FontSize="32" Template="{StaticResource ChaBtn}" Grid.Row="1" Grid.Column="1" Click="CleBtn_Click">C</Button>
+    </Grid>
+</Window>
